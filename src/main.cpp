@@ -12,10 +12,22 @@
 
 #include "utilerias.h"
 #include "registro.h"
+#include "nombres.h"
+using namespace std;
 
 // TODO: incluyan aqui el archivo .h de cada bloque individual.
 
 int main() {
+
+    std::cout << "boleta calificaciones"<<endl;
+    string alumnos[6];
+    RegistrarSeisNombres(alumnos);
+   cout << "\nLista de alumnos registrados:\n";
+   for (int i=0 ; i<6; i++){ 
+      std:: cout << i + 1 <<". " << alumnos [i] << endl;
+   }
+
+
     // TODO: declaren aqui los cuatro arreglos paralelos y el total de alumnos.
     //       No usen variables globales.
 
