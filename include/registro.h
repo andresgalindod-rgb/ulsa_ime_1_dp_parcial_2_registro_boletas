@@ -16,6 +16,8 @@
 // =====================================================
 
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 // ---------- Constantes compartidas ----------
 // Una constante no es una variable global: su valor nunca cambia.
@@ -73,3 +75,31 @@ void mostrarLista(const std::string nombres[],
 
 // ---------- Implementacion (equipo) ----------
 // Escriban aqui abajo el codigo de las tres funciones.
+
+void mostrarLista(const std::string nombres[],
+                  const double espanol[],
+                  const double matematicas[],
+                  const double disenoProgramas[],
+                  int total) {
+    const int ANCHO_NOMBRE = 10;
+
+    if (total == 0) {
+        std::cout << "No hay alumnos registrados.\n";
+        return;
+    }
+
+    std::cout << "--- LISTA DEL GRUPO ---\n";
+    std::cout << "   " << std::left << std::setw(ANCHO_NOMBRE) << "Nombre"
+              << std::right << std::setw(4) << "Esp"
+              << std::setw(7) << "Mat"
+              << std::setw(7) << "DP" << "\n";
+
+    std::cout << std::fixed << std::setprecision(1);
+    for (int i = 0; i < total; i++) {
+        std::cout << (i + 1) << ". "
+                  << std::left << std::setw(ANCHO_NOMBRE) << nombres[i]
+                  << std::right << std::setw(4) << espanol[i]
+                  << std::setw(7) << matematicas[i]
+                  << std::setw(7) << disenoProgramas[i] << "\n";
+    }
+}
