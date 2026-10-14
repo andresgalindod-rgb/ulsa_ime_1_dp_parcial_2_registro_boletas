@@ -8,24 +8,40 @@
 //
 // Lean PROYECTO.md antes de escribir codigo.
 
-#include <iostream>
+
 
 #include "utilerias.h"
 #include "registro.h"
-#include "nombres.h"
+
 using namespace std;
 
 // TODO: incluyan aqui el archivo .h de cada bloque individual.
 
-int main() {
+#include <iostream>
+#include <string>
+#include "nombres.h"
 
-    std::cout << "boleta calificaciones"<<endl;
-    string alumnos[6];
-    RegistrarSeisNombres(alumnos);
-   cout << "\nLista de alumnos registrados:\n";
-   for (int i=0 ; i<6; i++){ 
-      std:: cout << i + 1 <<". " << alumnos [i] << endl;
-   }
+int main() {
+    std::string alumnos[6];
+    double  esp[6], mat[6], dp[6];
+    int total = 0;
+
+    std::cout << "Boleta de calificaciones\n";
+
+    // Capturar un alumno
+    for (int i = 0; i < 6; i++) {
+    RegistrarAlumno(alumnos, esp, mat, dp, total);
+    }
+    // Mostrar lo que se capturó
+    std::cout << "\nAlumno registrado:\n";
+    std::cout << alumnos[0]
+              << "  Esp: " << esp[0]
+              << "  Mat: " << mat[0]
+              << "  DP: " << dp[0] << std::endl;
+
+    return 0;
+}
+    
 
 
     // TODO: declaren aqui los cuatro arreglos paralelos y el total de alumnos.
@@ -47,5 +63,4 @@ int main() {
     // Paso 7: teclear una opcion de menu que no existe (rechazo).
     // Paso 8: salir.
 
-    return 0;
-}
+
