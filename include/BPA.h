@@ -1,33 +1,36 @@
 #pragma once
-#include registro.h
-#include utilerias.h
-
+#ifndef BPA_H
+#define BPA_H
+#include "registro.h"
+#include "utilerias.h"
+#include "nombres.h"
 #include <iostream>
 #include <string>
-#include <cctype>
-#include <cmath>
-#include <cstdlib>
-#include <stdexcept>
 
-//Mostrar las boletas por alumno al ingresar el nombre del alumno que se quiere consultar o matricula
-// con las calificacion y alumnos ya capturdas , solo mostrar las calificacion por alumno
-
+int BuscarAlumno(std::string nombre, std::string Alumnos[], int tam)
 {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    for (int i = 0; i < tam; i++)
+    {
+        if (Alumnos[i] == nombre){
+            return i;
+        }
+    }
+    return -1;
 }
+int imprimirBoletaPorAlumno()
+{
+std::string Alumnos[] = {"nombre"};
+    int tam = 6;
+
+    int posicion = BuscarAlumno("nombre", Alumnos, tam);
+
+    if (posicion != -1) {
+        std::cout << "nombre" << posicion;
+    } else {
+        std::cout << "Alumno no encontrado";
+    }
+
+    return 0;
+   
+}
+#endif
