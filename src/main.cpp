@@ -8,36 +8,73 @@
 //
 // Lean PROYECTO.md antes de escribir codigo.
 
-
-
-#include "utilerias.h"
-#include "registro.h"
-
 using namespace std;
 
 // TODO: incluyan aqui el archivo .h de cada bloque individual.
 
 #include <iostream>
 #include <string>
+#include "registro.h"
+#include "utilerias.h"
+#include "estadisticas.h"
 #include "nombres.h"
+// #include de los .h de tus companeros (uno por reporte y la captura)
+
+void mostrarMenu() {
+    std::cout << "\n===== REGISTRO Y BOLETAS =====\n"
+              << "1. Capturar alumno\n"
+              << "2. Mostrar lista\n"
+              << "3. Estadisticas por materia\n"
+              << "4. Aprobados y reprobados\n"
+              << "5. Boleta individual\n"
+              << "6. Materias reprobadas por alumno\n"
+              << "7. Salir\n";
+}
 
 int main() {
-    std::string alumnos[6];
-    double  esp[6], mat[6], dp[6];
+    // Arreglos paralelos, dentro de main: no hay variables globales
+    std::string nombres[MAX_ALUMNOS];
+    double espanol[MAX_ALUMNOS];
+    double matematicas[MAX_ALUMNOS];
+    double disenoProgramas[MAX_ALUMNOS];
     int total = 0;
 
-    std::cout << "Boleta de calificaciones\n";
+    const int OPCION_SALIR = 7;
+    int opcion;
 
-    // Capturar un alumno
-    for (int i = 0; i < 6; i++) {
-    RegistrarAlumno(alumnos, esp, mat, dp, total);
-    }
-    // Mostrar lo que se capturó
-    std::cout << "\nAlumno registrado:\n";
-    std::cout << alumnos[0]
-              << "  Esp: " << esp[0]
-              << "  Mat: " << mat[0]
-              << "  DP: " << dp[0] << std::endl;
+    do {
+        mostrarMenu();
+        opcion = leerEntero("Opcion: ");
+
+        switch (opcion) {
+            case 1: {
+                RegistrarAlumno(nombres, espanol, matematicas,
+                                disenoProgramas, total);
+
+                break;
+            }
+            case 2:
+                mostrarLista(nombres, espanol, matematicas, disenoProgramas, total);
+                break;
+            case 3:
+                estadisticasPorMateria(nombres, espanol, matematicas, disenoProgramas, total);
+                break;
+            case 4:
+                // reporte del companero
+                break;
+            case 5:
+                // reporte del companero
+                break;
+            case 6:
+                // reporte del companero
+                break;
+            case OPCION_SALIR:
+                std::cout << "Hasta luego.\n";
+                break;
+            default:
+                std::cout << "Opcion invalida.\n";
+        }
+    } while (opcion != OPCION_SALIR);
 
     return 0;
 }
